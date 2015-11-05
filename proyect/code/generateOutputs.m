@@ -1,4 +1,4 @@
-function dp = generateOutputs( N,C,L )
+function [dp,y] = generateOutputs( N,C,L )
 %GENERATEOUTPUTS Simulated classifier outputs were carried out
 %Intput:
 %   N-number of instance
@@ -41,7 +41,8 @@ for j=1:L
 end
 
 %%RETURN
-dp = el;
+dp = el; %profile desicion
+y = tl;  %y etiquetas
 
 end
 
