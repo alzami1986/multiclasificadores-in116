@@ -1,0 +1,15 @@
+for i=1:N
+fprintf('%d',tl(i));
+end
+fprintf('\n');
+
+
+DP = zeros(N,L,R);
+Y = zeros(N,R);
+
+DP(:,:,k) = dp;
+Y(:,k) = y;
+MA = sum(DP,3)./R;
+
+
+p = abs(dp-repmat(y,1,L)) == 0;

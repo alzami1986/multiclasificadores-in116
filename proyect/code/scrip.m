@@ -2,21 +2,52 @@
 clc; clear;
 %%
 
-N = 1000;
-C = 3;
-L = 3;
+M = 500;
+C = 2;
+L = 20;
+R = 200;
 
-num_exp = 100;
-err = zeros(1,num_exp);
+err_mv = zeros(1,R);
+err_wmv = zeros(1,R);
+err_nb = zeros(1,R);
+s = rng;
 
-for k=1:num_exp
+for k=1:R    
     
-    [dp,y] = generateOutputs( N,C,L );
-    y_pred = MV( dp );
-    err(k) = mean(double(y_pred ~= y));
+    [dp,y] = generateOutputs( M,C,L );
+
+    
+    %MV
+    y_mv = MV( dp );
+    err_mv(k) = mean(double(y_mv == y)); 
+      
+
+	%WMV
+    y_wmv = WMV( dp, y, C );
+    err_wmv(k) = mean(double(y_wmv == y));
+            
+    %NB
+    y_nb = NB( dp, y, C );
+    err_nb(k) = mean(double(y_nb == y));
+    
+    
     
     fprintf('iter %d ...\n',k);
     
 end
 
-figure; plot(err);
+%%
+figure; 
+plot(err_mv(:), err_wmv(:),'ob');
+figure; 
+plot(err_mv(:), err_nb(:),'ob');
+
+
+
+
+
+
+
+
+
+
