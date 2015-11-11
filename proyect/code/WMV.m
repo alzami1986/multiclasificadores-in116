@@ -14,9 +14,6 @@ for i = 1:L
 end
 
 
-
-
-
 %prob a priori
 prior = zeros(C,1);
 for i=1:C
@@ -27,19 +24,18 @@ end
 
 for i=1:M
 
-% d = zeros(L,C);
-% d( ((1:L)-1).*C + DP(i,:)) = 1;
-
-
-%ecuacion 4.47
+%ecuacion 4.47 [kuncheva]
 %g_j(x) = log(P(w_j)) + sum_{i=1}^L d_{i,j} log(p_i/(1-p_i))
+%ecuacion 15. [kuncheva,Juan]
+%log(P(w_k|s)) prop:= log(P(w_k)) + sum_{iEI+^k}w_i + |I+^k|*log(c-1)
+
 g = zeros(C,1);
 for j=1:C
 d = (DP(i,:) == j);
 g(j) = log(prior(j)) +  sum( d(:).*log(p./(1-p)) ) + sum(d)*log(C-1)  ; % + sum(d(:,j))*log(C-1) d(:,j) 
 end
 
-[~,w] = max(g);
+[iw,w] = max(g);
 y_wmv(i) = w;
 
 

@@ -3,14 +3,14 @@ clc; clear;
 %%
 
 M = 500;
-C = 2;
+C = 3;
 L = 20;
 R = 200;
 
 err_mv = zeros(1,R);
 err_wmv = zeros(1,R);
 err_nb = zeros(1,R);
-s = rng;
+% s = rng;
 
 for k=1:R    
     
@@ -37,10 +37,10 @@ for k=1:R
 end
 
 %%
+% % figure; 
+% % plot(err_mv(:), err_wmv(:),'.b');
 figure; 
-plot(err_mv(:), err_wmv(:),'ob');
-figure; 
-plot(err_mv(:), err_nb(:),'ob');
+plot(err_mv(:), err_nb(:),'.b');
 
 
 

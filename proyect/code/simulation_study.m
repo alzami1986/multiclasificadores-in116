@@ -9,7 +9,7 @@ sim_c = [2, 3, 4, 5, 10, 20, 50]; %Number of classes
 sim_l = [2, 3, 4, 5, 10, 20, 50]; %Number of classifiers
 sim_num = 49; %numero de combinaciones 49
 N = 500; %Number of instances (labels)
-R = 100; %Number of runs 100
+R = 5; %Number of runs 100
 
 [paramC,paramL] = meshgrid(sim_c,sim_l);
 paramC = paramC(:); 
@@ -17,6 +17,8 @@ paramL = paramL(:);
 
 err_mv = zeros(R*49,1); 
 err_wmv = zeros(R*49,1); 
+err_nb = zeros(R*49,1); 
+
 iter=1;
 
 for s=1:sim_num
@@ -45,6 +47,10 @@ for s=1:sim_num
         y_wmv = WMV( dp, y, C );
         err_wmv(iter) = mean(double(y_wmv == y));
        
+        %NB
+        y_nb = NB( dp, y, C );
+        err_nb(iter) = mean(double(y_nb == y));
+        
         
         %txt
         fprintf('simulation iter %d ...\n',k);
@@ -58,7 +64,7 @@ end
 
 %% plot
 figure; 
-plot(err_mv, err_wmv,'.b');
+plot(err_mv, err_nb,'.b');
 
 
 
