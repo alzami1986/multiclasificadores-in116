@@ -14,13 +14,14 @@ err_nb = zeros(1,R);
 
 for k=1:R    
     
+    %Simula la salida de los clasificadores ...
     [dp,y] = generateOutputs( M,C,L );
 
+    %Aplicando relgas de fusion  
     
     %MV
     y_mv = MV( dp );
-    err_mv(k) = mean(double(y_mv == y)); 
-      
+    err_mv(k) = mean(double(y_mv == y));       
 
 	%WMV
     y_wmv = WMV( dp, y, C );
@@ -36,14 +37,30 @@ for k=1:R
     
 end
 
-%%
-% % figure; 
-% % plot(err_mv(:), err_wmv(:),'.b');
+%% Plot
+
+n = 5;
+xline = (1:n)./n;
+
+figure; 
+plot(err_mv(:), err_wmv(:),'.b');
+hold on
+plot(xline,xline,'--k');
+hold off
+
+xlabel('Majority Vote');
+ylabel('Weighted Majority Vote');
+title('L=100');
+
 figure; 
 plot(err_mv(:), err_nb(:),'.b');
+hold on
+plot(xline,xline,'--k');
+hold off
 
-
-
+xlabel('Majority Vote');
+ylabel('Naive Bayes');
+title('L=100');
 
 
 
