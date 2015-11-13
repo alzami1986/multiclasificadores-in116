@@ -4,7 +4,8 @@ function y_nb = NB( DP, y, C )
 
 [M,L] = size(DP);
 y_nb = zeros(M,1);
-numclass = tabulate(y); numclass = numclass(:,2);
+numclass = tabulate(y); 
+numclass = numclass(:,2);
 
 
 %prob de cada clasificador
