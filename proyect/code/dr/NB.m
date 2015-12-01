@@ -33,9 +33,10 @@ for j=1:c
     %Kuncheva and Juan
     u(j) = log(prior(j)) + sum( log(pijk) );
     
-% %     %Kuncheva
-% %     Nk = sum(double(y==j)); 
-% %     u(j) = (Nk/M)*(prod((pijk + 1/C)/(Nk+1)));
+%     %Kuncheva
+%     Nk = sum(double(y==j)); 
+%     u(j) = (Nk/M)*(prod((pijk + 1/C)/(Nk+1)));
+
     
 end
 

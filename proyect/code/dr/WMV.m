@@ -10,7 +10,6 @@ function y_wmv = WMV( dp, c, p, prior )
 %y_wmv estimaciion de la clase
 %
 
-
 [m,~] = size(dp);
 y_wmv = zeros(m,1);
 

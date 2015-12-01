@@ -1,14 +1,34 @@
 function y = MV( dp )
 %MV majority vote
-%   Detailed explanation goes here
+%Imput
+%dp decision profile
+%
+%Output
+%y estimaciion de la clase
+%
 
-[M,~] = size(dp);
-y = zeros(M,1);
+%Regla de votacion
+y = mode(dp,2);
 
-%regla de votacion
-for i=1:M
-y(i) = mode(dp(i,:));
-end
+% [N,~] = size(dp);
+% y = zeros(N,1);
+% for i=1:N
+%     
+% y(i) = mode(dp(i,:));
+% 
+% % g = zeros(c,1);
+% % for j=1:c
+% % d = (dp(i,:) == j);
+% % g(j) =  log((1-p)/(p*(c-1)))*log(prior(j)) +  sum(d);  
+% % %g(j) = sum(d); 
+% % end
+% % [~,w] = max(g);
+% % y(i) = w;
+% 
+% end
+
+
+
 
 end
 

@@ -1,4 +1,4 @@
-function CM = getConfucionMatrix( Y, Y_est, c  )
+function cm = getConfucionMatrix( Y, Y_est, c, varargin  )
 %getConfucionMatrix obtiene la matrix de conmfucion
 %input
 %Y clases esperadas
@@ -8,21 +8,18 @@ function CM = getConfucionMatrix( Y, Y_est, c  )
 %return
 %CM matrix de confucion prob
 
-CM = zeros(c);
-clases = 1:c;
-
-for i=1:c
-    for j=1:c
-    CM(i,j) = sum(Y == clases(i) & Y_est == clases(j));     
-    end
+bprob = 1;
+if nargin == 4
+bprob = varargin{1};
 end
 
-%calculando la frecuencia de clada clase
-frec_class = tabulate(Y);
-frec_class = frec_class(:,2);
+cm = confusionmat(Y,Y_est);
 
-%probabilidad
-CM = CM./repmat(frec_class,1,c);
+%Calculando la frecuencia de cada clase
+if bprob
+cm = cm./(repmat(sum(cm,2),1,c)); %P(s_i = w_k|w_k)
+end
+
 
 
 end
