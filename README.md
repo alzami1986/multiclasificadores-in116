@@ -7,7 +7,8 @@ List:
 * List04-Seleçãon Dinâmica de Classificadores
 
 Proyecto: Accurate and robust facial expressions recognition by fusing multiple sparse representation based classifiers
-
+* code: source
+* doc: relatorio, slides
 
 Professor: George Darmiton da Cunha Cavalcanti.
 
